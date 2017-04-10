@@ -38,3 +38,6 @@ jspm_packages
 
 #babel compile files
 *.b.js
+
+#webpack bundle files
+*.bundle.js
