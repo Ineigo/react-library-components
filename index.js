@@ -2,19 +2,17 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 
 //My Components
-import Dropdown from './components/Dropdown';
-
-
-const menus = [
-    {link: '/home', label: 'Home'},
-    {link: '/storyes', label: 'Story'},
-    {link: '/contacts', label: 'Contacts'}
-]
+import Button from './components/Button/Button';
 
 ReactDOM.render(
     <div>
         <h1>Hello, world!</h1>
-        <Dropdown items={menus}/>
+        <Button
+            title='Хеллоу'
+            type='submit'
+            iconStyle='copy'
+            onClick={e => console.log('onClick', e)}
+        />
     </div>,
     document.getElementById('root')
 );
