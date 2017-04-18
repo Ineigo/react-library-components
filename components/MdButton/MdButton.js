@@ -36,11 +36,17 @@ class MdButton extends React.Component {
         return (
             <div className={wrapperDivClass}>
                 <button className={buttonClass} type='button' onClick={this._onClickButton} onMouseLeave={this._onMouseLeave}>
-                    {this.props.loading && LoaderHelper.getSmall(this.getLoaderColor(), style['md-button__loader'])}
+                    {this.props.loading && this._getLoader()}
                     <span className={titleSpanClass}>{this.props.title}</span>
                 </button>
             </div>
         );
+    }
+
+    _getLoader() {
+        return (<span className={style['md-button__loader']}>
+            {LoaderHelper.getSmall(this.getLoaderColor())}
+        </span>);
     }
 
     _onClickButton = e => {
