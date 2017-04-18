@@ -1,383 +1,383 @@
 @font-face {
-  font-family: 'mbButtonIcon';
-  src: url('../Button/fonts/mdButtonIcon/md_button_icon.eot');
-  src: url('../Button/fonts/mdButtonIcon/md_button_icon.eot?#iefix') format('embedded-opentype'),
-  url('../Button/fonts/mdButtonIcon/md_button_icon.woff') format('woff'),
-  url('../Button/fonts/mdButtonIcon/md_button_icon.ttf') format('truetype'),
-  url('../Button/fonts/mdButtonIcon/md_button_icon.svg#md_button_icon') format('svg');
+    font-family: 'mbButtonIcon';
+    src: url('../Button/fonts/mdButtonIcon/md_button_icon.eot');
+    src: url('../Button/fonts/mdButtonIcon/md_button_icon.eot?#iefix') format('embedded-opentype'),
+    url('../Button/fonts/mdButtonIcon/md_button_icon.woff') format('woff'),
+    url('../Button/fonts/mdButtonIcon/md_button_icon.ttf') format('truetype'),
+    url('../Button/fonts/mdButtonIcon/md_button_icon.svg#md_button_icon') format('svg');
 }
 
 button:focus {
-  outline: none;
+    outline: none;
 }
 
 .md-button {
-  position: relative;
-  display: inline-block;
-  margin: 0 8px 0 0;
+    position: relative;
+    display: inline-block;
+    margin: 0 8px 0 0;
 
-  .md-button__body {
-    line-height: normal;
-    transition: all 0.25s linear;
-  }
+    .md-button__body {
+        line-height: normal;
+        transition: all 0.25s linear;
+    }
 
-  button::-moz-focus-inner{
-    padding: 0;
-    border: 0
-  }
+    button::-moz-focus-inner {
+        padding: 0;
+        border: 0
+    }
 }
 
 .md-button--pull {
-  width: 100%;
-
-  .md-button__body {
     width: 100%;
-    padding: 0;
 
-    &.md-button__body--icon {
-      padding: 0;
+    .md-button__body {
+        width: 100%;
+        padding: 0;
+
+        &.md-button__body--icon {
+            padding: 0;
+        }
     }
-  }
 }
 
 .md-button--disabled {
-  .md-button__body {
-    color: #b2b2b2;
-    background-image: none;
-    background: #eeeeee;
-    border-color: #eeeeee;
-    cursor: default;
+    .md-button__body {
+        color: #b2b2b2;
+        background-image: none;
+        background: #eeeeee;
+        border-color: #eeeeee;
+        cursor: default;
 
-    &:hover {
-      border-color: #eeeeee;
+        &:hover {
+            border-color: #eeeeee;
+        }
     }
-  }
 
-  .md-button__body--submit,
-  .md-button__body--delete {
-    color: #ffffff;
-    background: #c7c7c7;
+    .md-button__body--submit,
+    .md-button__body--delete {
+        color: #ffffff;
+        background: #c7c7c7;
 
-    &:hover,
-    &:active {
-      background-color: #c7c7c7;
+        &:hover,
+        &:active {
+            background-color: #c7c7c7;
+        }
     }
-  }
 
-  .md-button__body--link {
-    background: none;
+    .md-button__body--link {
+        background: none;
 
-    &:hover {
-      .md-button__title {
-        border: none;
-      }
+        &:hover {
+            .md-button__title {
+                border: none;
+            }
+        }
     }
-  }
 }
 
 .md-button__body {
-  display: inline-block;
-  cursor: pointer;
-  border-radius: 2px;
-  text-align: center;
-  height: 32px;
-  padding: 0 16px;
-  color: #505050;
-  background: #F4F4F4;
-  background-image: linear-gradient(to top, #E8E8E8, #F4F4F4);
-  border: 1px solid #DDDDDD;
+    display: inline-block;
+    cursor: pointer;
+    border-radius: 2px;
+    text-align: center;
+    height: 32px;
+    padding: 0 16px;
+    color: #505050;
+    background: #F4F4F4;
+    background-image: linear-gradient(to top, #E8E8E8, #F4F4F4);
+    border: 1px solid #DDDDDD;
 
-  &:hover {
-    border-color: #c7c7c7;
-  }
+    &:hover {
+        border-color: #c7c7c7;
+    }
 
-  &:active {
-    background-image: none;
-    background: #eeeeee;
-  }
+    &:active {
+        background-image: none;
+        background: #eeeeee;
+    }
 }
 
 .md-button__body--icon {
-  padding-left: 12px;
+    padding-left: 12px;
 }
 
 .md-button__body--submit {
-  font-weight: bold;
-  background-image: none;
-  background-color: #0A9644;
-  color: #ffffff;
-  border-color: #0A9644;
+    font-weight: bold;
+    background-image: none;
+    background-color: #0A9644;
+    color: #ffffff;
+    border-color: #0A9644;
 
-  &:hover {
-    background-color: #36aa51;
-    border-color: #36aa51;
-  }
-
-  &:active {
-    background-color: #1d8844;
-    border-color: #1d8844;
-  }
-
-  .md-button__title--caret {
-    &:after {
-      color: #ffffff;
+    &:hover {
+        background-color: #36aa51;
+        border-color: #36aa51;
     }
-  }
+
+    &:active {
+        background-color: #1d8844;
+        border-color: #1d8844;
+    }
+
+    .md-button__title--caret {
+        &:after {
+            color: #ffffff;
+        }
+    }
 }
 
 .md-button__body--delete {
-  color: #ffffff;
-  font-weight: bold;
-  background-image: none;
-  background-color: #ee444a;
-  border-color: #ee444a;
+    color: #ffffff;
+    font-weight: bold;
+    background-image: none;
+    background-color: #ee444a;
+    border-color: #ee444a;
 
-  &:hover {
-    background-color: #ff5f68;
-    border-color: #ff5f68;
-  }
+    &:hover {
+        background-color: #ff5f68;
+        border-color: #ff5f68;
+    }
 
-  &:active {
-    background-color: #cc3f40;
-    border-color: #cc3f40;
-  }
+    &:active {
+        background-color: #cc3f40;
+        border-color: #cc3f40;
+    }
 }
 
 .md-button__body--link {
-  border-color: transparent !important;
-  background: none;
-  color: #1F85C5;
-  padding: 0 16px 0 8px;
+    border-color: transparent !important;
+    background: none;
+    color: #1F85C5;
+    padding: 0 16px 0 8px;
 
-  .md-button__title {
-    padding-bottom: 1px;
-    border-bottom: 1px solid transparent;
-    top: 1px;
-    transition: border-color 0.25s linear;
-  }
-
-  &:hover {
     .md-button__title {
-      border-bottom-color: #1F85C5;
+        padding-bottom: 1px;
+        border-bottom: 1px solid transparent;
+        top: 1px;
+        transition: border-color 0.25s linear;
     }
-  }
 
-  &:active {
-    background-image: none;
-    background: transparent;
-  }
+    &:hover {
+        .md-button__title {
+            border-bottom-color: #1F85C5;
+        }
+    }
+
+    &:active {
+        background-image: none;
+        background: transparent;
+    }
 }
 
 .md-button__body.md-button__body--loading {
-  background-image: none;
-  background: #eeeeee;
-
-  &:hover,
-  &:active {
     background-image: none;
     background: #eeeeee;
-  }
+
+    &:hover,
+    &:active {
+        background-image: none;
+        background: #eeeeee;
+    }
 }
 
 .md-button__body--submit.md-button__body--loading {
-  background-color: #0A9644 !important;
-  border-color: #0A9644 !important;
+    background-color: #0A9644 !important;
+    border-color: #0A9644 !important;
 }
 
 .md-button__body--delete.md-button__body--loading {
-  background-color: #ee444a;
-  border-color:  #ee444a;
-
-  &:hover,
-  &:active {
     background-color: #ee444a;
-    border-color:  #ee444a;
-  }
+    border-color: #ee444a;
+
+    &:hover,
+    &:active {
+        background-color: #ee444a;
+        border-color: #ee444a;
+    }
 }
 
 .md-button__loader {
-  position: absolute;
-  left: 20px;
-  top: 8px;
+    position: absolute;
+    left: 20px;
+    top: 8px;
 }
 
 .md-button__title {
-  position: relative;
-  vertical-align: top;
-  display: inline-block;
-  margin-bottom: 2px;
-  font-size: 13px;
+    position: relative;
+    vertical-align: top;
+    display: inline-block;
+    margin-bottom: 2px;
+    font-size: 13px;
 }
 
 .md-button__title--normalFont {
-  font-weight: normal;
+    font-weight: normal;
 }
 
 .md-button__body--icon {
-  .md-button__title {
-    top: -1px;
+    .md-button__title {
+        top: -1px;
 
-    &:before,
-    &:after {
-      position: relative;
-      background: transparent;
-      font-family: mbButtonIcon;
-      color: #b2b2b2;
-    }
+        &:before,
+        &:after {
+            position: relative;
+            background: transparent;
+            font-family: mbButtonIcon;
+            color: #b2b2b2;
+        }
 
-    &:before {
-      font-size: 18px;
-      padding-right: 8px;
-      top: 1px;
-    }
+        &:before {
+            font-size: 18px;
+            padding-right: 8px;
+            top: 1px;
+        }
 
-    &:after {
-      font-size: 6px;
-      padding-left: 8px;
-      bottom: 1px;
+        &:after {
+            font-size: 6px;
+            padding-left: 8px;
+            bottom: 1px;
+        }
     }
-  }
 }
 
 .md-button__body--loading {
 
-  .md-button__loader {
-    position: relative;
-    left: 5px;
-    top: -2px;
-    margin-right: 20px;
-    display: inline-block;
-    vertical-align: middle;
-  }
+    .md-button__loader {
+        position: relative;
+        left: 5px;
+        top: -2px;
+        margin-right: 20px;
+        display: inline-block;
+        vertical-align: middle;
+    }
 
-  .md-button__title {
-    position: relative;
-    top: 0;
-    left: 0;
-  }
+    .md-button__title {
+        position: relative;
+        top: 0;
+        left: 0;
+    }
 
-  .md-button__title:before {
-    display: none;
-  }
+    .md-button__title:before {
+        display: none;
+    }
 }
 
 .md-button__body--submit,
 .md-button__body--delete {
-  .md-button__title {
-    &:before,
-    &:after {
-      color: #ffffff;
+    .md-button__title {
+        &:before,
+        &:after {
+            color: #ffffff;
+        }
     }
-  }
 }
 
 .md-button__title--copy {
-  &:before {
-    content: 'c';
-  }
+    &:before {
+        content: 'c';
+    }
 }
 
 .md-button__title--delete {
-  &:before {
-    content: 'i';
-  }
+    &:before {
+        content: 'i';
+    }
 }
 
 .md-button__title--turnRight {
-  &:before {
-    content: 'g';
-  }
+    &:before {
+        content: 'g';
+    }
 }
 
 .md-button__title--turnLeft {
-  &:before {
-    content: 'e';
-  }
+    &:before {
+        content: 'e';
+    }
 }
 
 .md-button__title--scalePlus {
-  &:before {
-    content: 'a';
-  }
+    &:before {
+        content: 'a';
+    }
 }
 
 .md-button__title--scaleMinus {
-  &:before {
-    content: 'b';
-  }
+    &:before {
+        content: 'b';
+    }
 }
 
 .md-button__title--download {
-  &:before {
-    content: 'd';
-  }
+    &:before {
+        content: 'd';
+    }
 }
 
 .md-button__title--upload {
-  &:before {
-    content: 'j';
-  }
+    &:before {
+        content: 'j';
+    }
 }
 
 .md-button__title--print {
-  &:before {
-    content: 'f';
-  }
+    &:before {
+        content: 'f';
+    }
 }
 
 .md-button__title--send {
-  &:before {
-    content: 'h';
-  }
+    &:before {
+        content: 'h';
+    }
 }
 
 .md-button__title--archive {
-  &:before {
-    font-size: 16px !important;
-    content: 'r';
-  }
+    &:before {
+        font-size: 16px !important;
+        content: 'r';
+    }
 }
 
 .md-button__title--unArchive {
-  &:before {
-    font-size: 16px !important;
-    content: 'u';
-  }
+    &:before {
+        font-size: 16px !important;
+        content: 'u';
+    }
 }
 
 .md-button__title--pdf {
-  &:before {
-    content: 'p';
-  }
+    &:before {
+        content: 'p';
+    }
 }
 
 .md-button__title--xls {
-  &:before {
-    content: 'l';
-  }
+    &:before {
+        content: 'l';
+    }
 }
 
 .md-button__title--caret {
-  &:after {
-    content: 'k';
-  }
+    &:after {
+        content: 'k';
+    }
 }
 
 .md-button__body--icon .md-button__title.md-button__title--search {
-  &:after {
-    content: 's';
+    &:after {
+        content: 's';
 
-    font-size: 16px;
-    font-weight: normal;
-    vertical-align: middle;
-    padding-left: 4px;
-    top: 0;
-  }
+        font-size: 16px;
+        font-weight: normal;
+        vertical-align: middle;
+        padding-left: 4px;
+        top: 0;
+    }
 }
 
 // Buttons group
 // --------------------------------------
 .md-buttonsGroup {
-  display: flex;
-  flex-direction: row;
+    display: flex;
+    flex-direction: row;
 }

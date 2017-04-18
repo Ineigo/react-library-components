@@ -1,61 +1,57 @@
-/**
- * Created by Ineigo Kira on 17.04.2017.
- */
 import React from 'react';
 import PropTypes from 'prop-types';
 import style from './style.m.less';
-import Loader from 'react-loader';
 import classNames from 'classnames';
+import LoaderHelper from '../../helpers/LoaderHelper';
 
 class Button extends React.Component {
-    constructor(props) {
-        super(props);
-    }
-
     static propTypes = {
-        type: PropTypes.string, // one of: 'submit', 'delete', 'link'
-        title: PropTypes.string, // текст кнопки
-        iconStyle: PropTypes.string, // one of: 'copy', 'delete', 'turnRight', 'turnLeft', 'scalePlus', 'scaleMinus', 'download', 'upload', 'print', 'send'
+        type: PropTypes.string,
+        title: PropTypes.string,
+        iconStyle: PropTypes.string,
         loading: PropTypes.bool,
         disabled: PropTypes.bool,
-        onClick: PropTypes.func,
-        fontWeight: PropTypes.string, // 'normal'
+        fontWeight: PropTypes.string,
+        onClick: PropTypes.func.isRequired,
         onMouseLeave: PropTypes.func,
-        widthStyle: PropTypes.string, //one of: 'pull'
-        extraClasses: PropTypes.string //пользовательский класс
+        widthStyle: PropTypes.string,
+        extraClasses: PropTypes.string
     };
 
     getLoaderColor() {
-        const submitColor = '#fff';
+        let color = '#000';
         const type = this.props.type;
         if (type === 'submit' || type === 'delete') {
-            return submitColor;
+            color = '#fff';
         }
+        return color;
     }
-    getLoader() {
-        return (
-            <span className={style['md-button__loader']}>
-                <Loader lines={10} length={3} width={2} radius={3} color={this.getLoaderColor()}/>
-            </span>
-        );
-    }
+
+
 
     render() {
         const buttonClass = this._getClassNamesForButton();
         const titleSpanClass = this._getClassNamesForTitle();
         const wrapperDivClass = this._getClassNamesForWrapper();
-
         return (
             <div className={wrapperDivClass}>
-                <button className={buttonClass} type='button'
-                        onClick={e => !this.props.disabled && this.props.onClick(e)}
-                        onMouseLeave={e => !this.props.disabled && this.props.onMouseLeave && this.props.onMouseLeave(e)}>
-                    {this.props.loading && this.getLoader()}
+                <button className={buttonClass} type='button' onClick={this._onClickButton} onMouseLeave={this._onMouseLeave}>
+                    {this.props.loading && LoaderHelper.getSmall(this.getLoaderColor(), style['md-button__loader'])}
                     <span className={titleSpanClass}>{this.props.title}</span>
                 </button>
             </div>
         );
     }
+
+    _onClickButton = e => {
+        !this.props.disabled && this.props.onClick(e);
+    };
+
+    _onMouseLeave = e => {
+        if (!this.props.disabled && this.props.onMouseLeave) {
+            this.props.onMouseLeave(e);
+        }
+    };
 
     _getClassNamesForButton() {
         return classNames(
@@ -64,8 +60,7 @@ class Button extends React.Component {
                 [style['md-button__body--icon']]: this.props.iconStyle,
                 [style['md-button__body--loading']]: this.props.loading,
                 [this.props.extraClasses]: this.props.extraClasses
-            },
-            'js-button'
+            }
         );
     }
 

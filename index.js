@@ -11,6 +11,7 @@ ReactDOM.render(
             title='Хеллоу'
             type='submit'
             iconStyle='copy'
+            loading
             onClick={e => console.log('onClick', e)}
         />
     </div>,

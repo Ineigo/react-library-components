@@ -39,12 +39,17 @@ module.exports = {
                 loader: 'html-loader'
             },
             {
-                test: /\.(jpe?g|png|gif|svg)$/i,
+                test: /\.(jpe?g|png|gif)$/i,
                 loader: 'file-loader'
             },
             {
                 test: /\.(eot|woff|woff2|ttf)$/,
                 loader: 'url-loader?limit=30000&name=[name]-[hash].[ext]'
+            },
+            { test: /\.svg$/, loader: 'svg-react' },
+            {
+                test: /\.svg$/,
+                loader: 'svg-sprite?name=[name]__[hash]'
             },
             {
                 test: /\.hbs$/,
