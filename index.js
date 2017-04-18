@@ -2,12 +2,12 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 
 //My Components
-import Button from './components/Button/Button';
+import MdButton from './components/MdButton/MdButton';
 
 ReactDOM.render(
     <div>
         <h1>Hello, world!</h1>
-        <Button
+        <MdButton
             title='Хеллоу'
             type='submit'
             iconStyle='copy'

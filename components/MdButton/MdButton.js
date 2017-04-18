@@ -4,7 +4,7 @@ import style from './style.m.less';
 import classNames from 'classnames';
 import LoaderHelper from '../../helpers/LoaderHelper';
 
-class Button extends React.Component {
+class MdButton extends React.Component {
     static propTypes = {
         type: PropTypes.string,
         title: PropTypes.string,
@@ -79,4 +79,4 @@ class Button extends React.Component {
     }
 }
 
-export default Button;
+export default MdButton;
