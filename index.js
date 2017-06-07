@@ -2,18 +2,45 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 
 //My Components
-import MdButton from './components/MdButton/MdButton';
 
-ReactDOM.render(
-    <div>
-        <h1>Hello, world!</h1>
-        <MdButton
-            title='Хеллоу'
-            type='submit'
-            iconStyle='copy'
-            loading
-            onClick={e => console.log('onClick', e)}
-        />
-    </div>,
-    document.getElementById('root')
-);
+// import Dropdown from './components/Dropdown';
+import Table from './components/Table/Table';
+import TableStore from './components/Table/TableStore';
+
+const menus = [
+    {link: '/home', label: 'Home'},
+    {link: '/storyes', label: 'Story'},
+    {link: '/contacts', label: 'Contacts'}
+]
+class Root extends React.Component {
+    constructor(props) {
+        super(props);
+        this.tableStore = new TableStore({
+            columns: [
+                { key: 'id', title: 'ID' },
+                { key: 'name', title: 'Name' },
+                { key: 'data', title: 'Дата' },
+            ],
+            data: [
+                { data: '21.03.2015', name: 'test 1', isDone: false, id: 0 },
+                { data: '21.03.2016', name: 'test 2', isDone: true, id: 1 }
+            ]
+        });
+    }
+    editData = () => {
+        this.tableStore.data[0].id += 1;
+        //this.tableStore.data.push(['d', 'ds', 'dd', 'rr']);
+        console.log('edited', this.tableStore.data);
+    };
+    render() {
+        return(
+            <div>
+                <a onClick={this.editData}>сорт</a>
+                <Table data={this.tableStore.data} columns={this.tableStore.columns}/>
+            </div>
+        );
+    }
+
+}
+ReactDOM.render(<Root />, document.getElementById('root'));
+>>>>>>> In progress Table

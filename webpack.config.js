@@ -9,7 +9,8 @@ module.exports = {
         app: './index.js'
     },
     output: {
-        filename: '[name].bundle.js?[hash]'
+        filename: '[name].bundle.js',
+        path: __dirname + '/static/'
     },
     devtool: 'source-map',
     module: {
@@ -19,7 +20,11 @@ module.exports = {
                 loader: 'babel-loader',
                 query: {
                     presets: ['es2015', 'react'],
-                    plugins: ['transform-class-properties', 'transform-react-jsx']
+                    plugins: [
+                        'transform-decorators-legacy',
+                        'transform-class-properties', 
+                        'transform-react-jsx'
+                    ]
                 }
             },
             {
@@ -67,6 +72,7 @@ module.exports = {
         extensions: ['', '.js']
     },
     plugins: [
+        new webpack.HotModuleReplacementPlugin(),
         new ExtractTextPlugin('[name].css', {
             allChunks: true
         }),
@@ -74,6 +80,10 @@ module.exports = {
         new webpack.DefinePlugin({
             __BUILD_NUMBER__: JSON.stringify(""),
         })
-    ]
+    ],
+    devServer: { 
+        inline: true,
+        hot: true
+    }
 };
 
