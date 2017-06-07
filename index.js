@@ -3,7 +3,6 @@ import ReactDOM from 'react-dom';
 
 //My Components
 
-// import Dropdown from './components/Dropdown';
 import Table from './components/Table/Table';
 import TableStore from './components/Table/TableStore';
 
@@ -29,7 +28,6 @@ class Root extends React.Component {
     }
     editData = () => {
         this.tableStore.data[0].id += 1;
-        //this.tableStore.data.push(['d', 'ds', 'dd', 'rr']);
         console.log('edited', this.tableStore.data);
     };
     render() {
@@ -43,4 +41,3 @@ class Root extends React.Component {
 
 }
 ReactDOM.render(<Root />, document.getElementById('root'));
->>>>>>> In progress Table
