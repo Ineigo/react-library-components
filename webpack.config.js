@@ -29,11 +29,11 @@ module.exports = {
             },
             {
                 test: /[^(?:\.m)]\.less$/,
-                loader: ExtractTextPlugin.extract('css?sourceMap!postcss!less?sourceMap')
+                loader: ExtractTextPlugin.extract('css?sourceMap!less?sourceMap')
             },
             {
                 test: /\.m\.less$/,
-                loader: ExtractTextPlugin.extract('css?modules&importLoaders=1&localIdentName=[name]__[local]___[hash:base64:5]&sourceMap!postcss!less?sourceMap')
+                loader: ExtractTextPlugin.extract('css?modules&importLoaders=1&localIdentName=[name]__[local]___[hash:base64:5]&sourceMap!less?sourceMap')
             },
             {
                 test: /\.css$/,
@@ -57,23 +57,10 @@ module.exports = {
             }
         ]
     },
-    postcss: function() {
-        return [
-            autoprefixer({browsers: ['last 5 versions']})
-        ];
-    },
-    resolve: {
-        modulesDirectories: [
-            'web_modules',
-            'node_modules'
-        ],
-        alias: {
-        },
-        extensions: ['', '.js']
-    },
     plugins: [
         new webpack.HotModuleReplacementPlugin(),
-        new ExtractTextPlugin('[name].css', {
+        new ExtractTextPlugin({
+            filename: '[name].css',
             allChunks: true
         }),
         new webpack.ContextReplacementPlugin(/moment[\/\\]locale$/, /ru/),

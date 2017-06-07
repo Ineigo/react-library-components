@@ -9,11 +9,17 @@ class TableStore {
     @observable columns = [];
 
     getClearData(data = []) {
-        return data.map(item => {
-            const newItem = {};
-            this.columns.forEach(col => newItem[col.key] = item[col.key]);
-            return newItem;
-        });
+        return data.map(this.clearDataItem);
+    }
+
+    clearDataItem = (item) => {
+        const newItem = {};
+        this.columns.forEach(col => newItem[col.key] = item[col.key]);
+        return newItem;
+    }
+
+    addItemToData(item) {
+        this.data.push(this.clearDataItem(item));
     }
 
     // @computed get upid(i) {

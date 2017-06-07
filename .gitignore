@@ -40,7 +40,7 @@ jspm_packages
 *.b.js
 
 #webpack bundle files
-*.bundle.js
+*.bundle.*
 
 #idea
 .idea

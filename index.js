@@ -29,11 +29,20 @@ class Root extends React.Component {
     editData = () => {
         this.tableStore.data[0].id += 1;
         console.log('edited', this.tableStore.data);
-    };
+    }
+    addRow = () => {
+        this.tableStore.addItemToData({ 
+            data: '21.03.2015', 
+            name: 'test 1', 
+            isDone: false, 
+            id: 0 
+        });
+    }
     render() {
         return(
             <div>
-                <a onClick={this.editData}>сорт</a>
+                <button onClick={this.editData}>Обновить Id первой строки</button>
+                <button onClick={this.addRow}>Добавить строку</button>
                 <Table data={this.tableStore.data} columns={this.tableStore.columns}/>
             </div>
         );

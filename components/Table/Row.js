@@ -8,9 +8,9 @@ class Row extends React.Component {
     constructor(props) {
         super(props);
     }
-    // componentWillReceiveProps(nextProps) {
-    //     //console.log('Row:componentWillReceiveProps', nextProps);
-    // }
+    componentWillReceiveProps(nextProps) {
+        console.log('Row:componentWillReceiveProps', nextProps);
+    }
 
     render() {
         const cells = [];
