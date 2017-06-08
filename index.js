@@ -5,12 +5,6 @@ import ReactDOM from 'react-dom';
 import Table from './components/Table/Table';
 import TableStore from './components/Table/TableStore';
 
-//My Components
-
-
-
-
-
 class Root extends React.Component {
     constructor(props) {
         super(props);
@@ -22,9 +16,9 @@ class Root extends React.Component {
                 isDone: { title: 'готово?' }
             }
         });
-        this.tableStore.updateData([
-            { data: '21.03.2015', name: 'test 1', isDone: false, id: 0 },
-            { data: '21.03.2016', name: 'test 2', isDone: true, id: 1 }
+        this.tableStore.setData([
+            { data: '21.03.2015', name: 'test 2', isDone: false, id: 0 },
+            { data: '21.03.2016', name: 'test 1', isDone: true, id: 1 }
         ]);
     }
     editData = () => {

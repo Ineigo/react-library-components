@@ -15,23 +15,17 @@ class Table extends React.Component {
         this.store = window.t = props.store;
     }
 
-    componentWillReceiveProps(nextProps) {
-        console.log('Table:componentWillReceiveProps', nextProps);
-    }
-
     render() {
-        const headers = [];
-        for(let key in this.store.columns) {
-            let title = this.store.columns[key].title || this.store.columns[key];
-            headers.push(<Cell key={key} className="table_cell" value={title} />);
-        }
+        let data = this.store.sort.key ? this.store.sortedData : this.store.data;
         return (
             <div>
                 <h3>Титле</h3>
                 <div className="table_header">
-                    {headers}
+                    <Row row={this.store.columns} onClickCell={this.store.setSort} />
                 </div>
-                {this.store.data.map((item, i) => <Row key={i} row={item} columns={this.store.columns} />)}
+                <div className="table_body">
+                    {data.map((item, i) => <Row key={i} row={item} columns={this.store.columns} />)}
+                </div>
             </div>
         );
     }
