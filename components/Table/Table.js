@@ -1,13 +1,18 @@
+import { PropTypes, observer } from 'mobx-react';
+
+import Cell from './Cell';
 import React from 'react';
-
 import Row from './Row';
-
-import { observer } from 'mobx-react';
 
 @observer
 class Table extends React.Component {
+    static propsType = {
+        store: PropTypes.observableObject.isRequired
+    }
+
     constructor(props) {
         super(props);
+        this.store = window.t = props.store;
     }
 
     componentWillReceiveProps(nextProps) {
@@ -15,13 +20,18 @@ class Table extends React.Component {
     }
 
     render() {
+        const headers = [];
+        for(let key in this.store.columns) {
+            let title = this.store.columns[key].title || this.store.columns[key];
+            headers.push(<Cell key={key} className="table_cell" value={title} />);
+        }
         return (
             <div>
                 <h3>Титле</h3>
                 <div className="table_header">
-                    {this.props.columns.map((item, i) => <div key={i} className="table_cell">{item.title}</div>)}
+                    {headers}
                 </div>
-                {this.props.data.map((item, i) => <Row key={i} row={item} />)}
+                {this.store.data.map((item, i) => <Row key={i} row={item} columns={this.store.columns} />)}
             </div>
         );
     }

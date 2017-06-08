@@ -1,6 +1,6 @@
-var path = require('path');
-var webpack = require('webpack');
-var ExtractTextPlugin = require("extract-text-webpack-plugin");
+const path = require('path');
+const webpack = require('webpack');
+const ExtractTextPlugin = require("extract-text-webpack-plugin");
 const autoprefixer = require('autoprefixer');
 
 module.exports = {
@@ -37,7 +37,7 @@ module.exports = {
             },
             {
                 test: /\.css$/,
-                loader: ExtractTextPlugin.extract('css?sourceMap!postcss')
+                loader: ExtractTextPlugin.extract('css?sourceMap')
             },
             {
                 test: /\.html$/,

@@ -3,7 +3,7 @@ import React from 'react';
 class Dropdown extends React.Component {
     constructor(props) {
         super(props);
-        this.state = { isOpened: false };
+        this.state = { isOpened: props.isOpened || false };
     }
 
     toogleState = () => this.setState({ isOpened: !this.state.isOpened });
