@@ -19,7 +19,7 @@ module.exports = {
                 exclude: /(node_modules)/,
                 loader: 'babel-loader',
                 query: {
-                    presets: ['es2015', 'react'],
+                    presets: ['es2015', 'react', 'react-hmre'],
                     plugins: [
                         'transform-decorators-legacy',
                         'transform-class-properties', 
@@ -58,7 +58,6 @@ module.exports = {
         ]
     },
     plugins: [
-        new webpack.HotModuleReplacementPlugin(),
         new ExtractTextPlugin({
             filename: '[name].css',
             allChunks: true
@@ -68,9 +67,10 @@ module.exports = {
             __BUILD_NUMBER__: JSON.stringify(""),
         })
     ],
-    devServer: { 
-        inline: true,
-        hot: true
+    devServer: {
+        historyApiFallback: {
+            index: 'index.html'
+        }
     }
 };
 

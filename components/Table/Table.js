@@ -19,7 +19,7 @@ class Table extends React.Component {
         let data = this.store.sort.key ? this.store.sortedData : this.store.data;
         return (
             <div>
-                <h3>Титле</h3>
+                <h3>Заголовок</h3>
                 <div className="table_header">
                     <Row row={this.store.columns} onClickCell={this.store.setSort} />
                 </div>
