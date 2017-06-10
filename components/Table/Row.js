@@ -20,11 +20,12 @@ class Row extends React.Component {
 
     getCurrentView(value, key) {
         if (!this.columns) return value.title || key;
+        if (!this.columns.hasOwnProperty(key)) return;
         let CurrentCell;
         if (this.columns[key].preRenderCell instanceof Function) {
              CurrentCell = this.columns[key].preRenderCell(value, this.props.id);
          } else {
-             CurrentCell = new String(value);
+             CurrentCell = value;
          }
         return CurrentCell;
     }

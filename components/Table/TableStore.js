@@ -5,9 +5,9 @@ class TableStore {
      * Store для таблицы инициализируется данными(необязательный параметр) и настройкой шапки
      * @param {Array} data Данные которые сопоставятся по ключам с columns (пропущенные в columns не выведутся)
      * @param {Object} columns Описание столбцов. Ключ - связь с данными в data
-     * @example { id: { title: 'ID', cell: React.Component } } 
-     * @example { id: { title: 'ID' } } -> cell можно не указывать, тогда просто содержимое передастся как текст
-     * @example { id: { cell: React.Component } } Преобразуется к виду { id: { title: 'ID', cell: React.Component } } 
+     * @example { id: { title: 'ID', preRenderCell: any } } 
+     * @example { id: { title: 'ID' } } -> preRenderCell можно не указывать, тогда просто содержимое передастся как текст
+     * @example { id: { preRenderCell: any } } Преобразуется к виду { id: { title: 'ID', preRenderCell: any } } 
      * @example { id: undefined } не отобразится
      * @example { id: 'ID' } Преобразуется к виду { id: { title: 'ID' } }
      */
@@ -48,10 +48,11 @@ class TableStore {
     }
 
     clearDataItem = (item) => {
-        const newItem = {};
+        let newItem = {};
         for(let key in this.columns) {
             newItem[key] = item[key];
         }
+        newItem = Object.assign(newItem, item);
         return newItem;
     }
 

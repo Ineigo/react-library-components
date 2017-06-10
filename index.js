@@ -1,5 +1,6 @@
 import Cell from './components/Table/Cell';
 import Dropdown from './components/Dropdown';
+import MdButton from './components/MdButton/MdButton';
 import React from 'react';
 import ReactDOM from 'react-dom';
 import Row from './components/Table/Row';
@@ -12,10 +13,8 @@ class Root extends React.Component {
         this.tableStore = new TableStore({
             idAttribute: 'id',
             columns: {
-                id: 'ID',
-                data: { title: 'Data', preRenderCell: (value, id) => {
-                    return `${value} чт`;
-                }},
+                //id: 'ID',
+                data: { title: 'Data', preRenderCell: (value, id) => <MdButton title={value} onClick={() => (console.log(value))} /> },
                 name: 'Name',
                 isDone: { title: 'готово?', preRenderCell: (value, id) => {
                     const row = this.tableStore.getRowById(id);

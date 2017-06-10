@@ -3,6 +3,8 @@ const webpack = require('webpack');
 const ExtractTextPlugin = require("extract-text-webpack-plugin");
 const autoprefixer = require('autoprefixer');
 
+
+
 module.exports = {
     stats: { children: false },
     entry: {
@@ -19,7 +21,7 @@ module.exports = {
                 exclude: /(node_modules)/,
                 loader: 'babel-loader',
                 query: {
-                    presets: ['es2015', 'react', 'react-hmre'],
+                    presets: [ 'es2015', 'stage-0', 'react', 'react-hmre' ],
                     plugins: [
                         'transform-decorators-legacy',
                         'transform-class-properties', 
@@ -28,16 +30,40 @@ module.exports = {
                 }
             },
             {
-                test: /[^(?:\.m)]\.less$/,
-                loader: ExtractTextPlugin.extract('css?sourceMap!less?sourceMap')
+                test: /(?!\.m)..\.less$/,
+                use: ExtractTextPlugin.extract({
+                    use: [
+                        { loader: 'css-loader', options: { sourceMap: true } },
+                        { loader: 'less-loader', options: { sourceMap: true } },
+                    ]
+                })
             },
             {
                 test: /\.m\.less$/,
-                loader: ExtractTextPlugin.extract('css?modules&importLoaders=1&localIdentName=[name]__[local]___[hash:base64:5]&sourceMap!less?sourceMap')
+                //loader: ExtractTextPlugin.extract('css&importLoaders=1&localIdentName=[name]__[local]___[hash:base64:5]&sourceMap!less?sourceMap')
+                use: ExtractTextPlugin.extract({
+                    fallback: 'style-loader',
+                    use: [
+                        {
+                            loader: 'css-loader', query : {
+                                modules: true,
+                                importLoaders: 1,
+                                localIdentName: '[name]__[local]___[hash:base64:5]',
+                                sourceMap: true
+                            }
+                        },
+                        { loader: 'less-loader' },
+                    ]
+                })
             },
             {
                 test: /\.css$/,
-                loader: ExtractTextPlugin.extract('css?sourceMap')
+                use: ExtractTextPlugin.extract({
+                    fallback: 'style-loader',
+                    use: [
+                        { loader: 'css-loader', options: { sourceMap: true } }
+                    ]
+                })
             },
             {
                 test: /\.html$/,
