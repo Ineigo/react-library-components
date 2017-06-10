@@ -10,14 +10,16 @@ class Root extends React.Component {
     constructor(props) {
         super(props);
         this.tableStore = new TableStore({
+            idAttribute: 'id',
             columns: {
                 id: 'ID',
-                data: { title: 'Data', preRenderCell: (value) => {
-                    return value + ' чт';
+                data: { title: 'Data', preRenderCell: (value, id) => {
+                    return `${value} чт`;
                 }},
                 name: 'Name',
-                isDone: { title: 'готово?', preRenderCell: value => {
-                    return <input type="checkbox" checked={value} onClick={console.log} />
+                isDone: { title: 'готово?', preRenderCell: (value, id) => {
+                    const row = this.tableStore.getRowById(id);
+                    return <input type="checkbox" checked={value} onChange={() => row.isDone = !value} />
                 }}
             }
         });
@@ -31,19 +33,21 @@ class Root extends React.Component {
         console.log('edited', this.tableStore.data);
     }
     addRow = () => {
+        const nextId = this.tableStore.data.length;
         this.tableStore.addItemToData({ 
-            data: '21.03.2015', 
-            name: 'test 1', 
+            data: (new Date()).toLocaleDateString(), 
+            name: `test ${nextId}`, 
             isDone: false, 
-            id: 0 
+            id: nextId
         });
     }
+    getRow = (id, item, columns) => <Row2 key={id} id={id} row={item} columns={columns} />;
     render() {
         return(
             <div>
                 <button onClick={this.editData}>Обновить Id первой строки</button>
                 <button onClick={this.addRow}>Добавить строку</button>
-                <Table store={this.tableStore} getRowComponent={(id, item, columns) => <Row2 key={id} row={item} columns={columns} />}/>
+                <Table store={this.tableStore} getRowComponent={this.getRow}/>
             </div>
         );
     }

@@ -9,6 +9,7 @@ class Row extends React.Component {
     static propTypes = {
         columns: PTMobx.observableObject,
         row: PTMobx.observableObject.isRequired,
+        id: PropTypes.oneOfType([ PropTypes.string, PropTypes.number ]),
         onClickCell: PropTypes.func,
         onClickRow: PropTypes.func
     }
@@ -21,7 +22,7 @@ class Row extends React.Component {
         if (!this.columns) return value.title || key;
         let CurrentCell;
         if (this.columns[key].preRenderCell instanceof Function) {
-             CurrentCell = this.columns[key].preRenderCell(value);
+             CurrentCell = this.columns[key].preRenderCell(value, this.props.id);
          } else {
              CurrentCell = new String(value);
          }

@@ -24,15 +24,15 @@ class Table extends React.Component {
 
     _getBodyRows() {
         const data = this.store.sort.key ? this.store.sortedData : this.store.data;
-        return data.map((item, i) => this._getDefaultRow(item.id, item, this.store.columns));
+        return data.map((item, i) => this._getDefaultRow(item[this.store.idAttribute], item, this.store.columns));
     }
 
-    _getDefaultRow(key, item, columns) {
+    _getDefaultRow(id, item, columns) {
         let row;
         if (this.props.hasOwnProperty('getRowComponent')) {
-            row = this.props.getRowComponent(key, item, columns)
+            row = this.props.getRowComponent(id, item, columns)
         } else {
-            row = <Row key={key} row={item} columns={columns} />;
+            row = <Row key={id} id={id} row={item} columns={columns} />;
         }
         return row;
     }
@@ -42,7 +42,7 @@ class Table extends React.Component {
             <div>
                 <h3>Заголовок</h3>
                 <div className="table_header">
-                    <Row row={this.store.columns} onClickCell={this.store.setSort} />
+                    <Row id="header" row={this.store.columns} onClickCell={this.store.setSort} />
                 </div>
                 <div className="table_body">
                     {this._getBodyRows()}

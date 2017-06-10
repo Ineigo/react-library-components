@@ -11,22 +11,24 @@ class TableStore {
      * @example { id: undefined } не отобразится
      * @example { id: 'ID' } Преобразуется к виду { id: { title: 'ID' } }
      */
-    constructor({ columns = {}, data = []}) {
+    constructor({ columns = {}, data = [], idAttribute = 'id'}) {
         this.columns = this._compileColumns(columns);
         this.data = this.getClearData(data);
+        this.idAttribute = idAttribute;
     }
     @observable data = [];
     @observable columns = {};
-    @observable sort = {
-        key: '',
-        type: 1
-    };
+    @observable sort = { key: '', type: 1 };
 
     setSort = (key) => {
         this.sort = { 
             type: this.sort.key === key ? -this.sort.type : this.sort.type,
             key
         };
+    }
+
+    getRowById(id) {
+        return this.data.find(item => item[this.idAttribute] === id);
     }
 
     getClearData(data = []) {
