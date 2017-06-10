@@ -1,9 +1,17 @@
+import { PropTypes as PTMobx, observer } from 'mobx-react';
+
 import Cell from './Cell';
+import PropTypes from 'prop-types';
 import React from 'react';
-import { observer } from 'mobx-react';
 
 @observer
 class Row extends React.Component {
+    static propTypes = {
+        columns: PTMobx.observableObject,
+        row: PTMobx.observableObject.isRequired,
+        onClickCell: PropTypes.func,
+        onClickRow: PropTypes.func
+    }
     constructor(props) {
         super(props);
         this.columns = props.columns || null;

@@ -2,6 +2,7 @@ import Cell from './components/Table/Cell';
 import Dropdown from './components/Dropdown';
 import React from 'react';
 import ReactDOM from 'react-dom';
+import Row from './components/Table/Row';
 import Table from './components/Table/Table';
 import TableStore from './components/Table/TableStore';
 
@@ -42,10 +43,16 @@ class Root extends React.Component {
             <div>
                 <button onClick={this.editData}>Обновить Id первой строки</button>
                 <button onClick={this.addRow}>Добавить строку</button>
-                <Table store={this.tableStore} />
+                <Table store={this.tableStore} getRowComponent={(id, item, columns) => <Row2 key={id} row={item} columns={columns} />}/>
             </div>
         );
     }
 
 }
+
+/**
+ * Строки можно переопределять простым наследованием
+ */
+class Row2 extends Row { render = () => <div>{this.getCells()}<hr /></div>; }
+
 ReactDOM.render(<Root />, document.getElementById('root'));
