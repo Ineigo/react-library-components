@@ -11,9 +11,13 @@ class Root extends React.Component {
         this.tableStore = new TableStore({
             columns: {
                 id: 'ID',
-                data: { cell: Cell },
+                data: { title: 'Data', preRenderCell: (value) => {
+                    return value + ' чт';
+                }},
                 name: 'Name',
-                isDone: { title: 'готово?' }
+                isDone: { title: 'готово?', preRenderCell: value => {
+                    return <input type="checkbox" checked={value} onClick={console.log} />
+                }}
             }
         });
         this.tableStore.setData([

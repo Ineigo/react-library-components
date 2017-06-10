@@ -47,7 +47,6 @@ class TableStore {
 
     clearDataItem = (item) => {
         const newItem = {};
-        // this.columns.forEach(col => newItem[col.key] = item[col.key]);
         for(let key in this.columns) {
             newItem[key] = item[key];
         }

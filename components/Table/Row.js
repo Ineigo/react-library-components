@@ -12,9 +12,8 @@ class Row extends React.Component {
     getCurrentView(value, key) {
         if (!this.columns) return value.title || key;
         let CurrentCell;
-        if (this.columns[key].cell instanceof React.Component) {
-             const obj = this.columns[key].cell;
-             CurrentCell = <obj value={value} />
+        if (this.columns[key].preRenderCell instanceof Function) {
+             CurrentCell = this.columns[key].preRenderCell(value);
          } else {
              CurrentCell = new String(value);
          }
