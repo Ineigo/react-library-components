@@ -14,7 +14,7 @@ class Root extends React.Component {
             idAttribute: 'id',
             columns: {
                 //id: 'ID',
-                data: { title: 'Data', preRenderCell: (value, id) => <MdButton title={value} onClick={() => (console.log(value))} /> },
+                data: { title: 'Data', preRenderCell: (value, id) => <div><b>{id}</b> <MdButton title={value} onClick={() => (console.log(value))} /></div> },
                 name: 'Name',
                 isDone: { title: 'готово?', preRenderCell: (value, id) => {
                     const row = this.tableStore.getRowById(id);
